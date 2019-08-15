@@ -58,10 +58,9 @@ class Zoltar
     zoltar_responds()
   end
   def coward()
-    puts "You walk away feeling very unsatisfied"
+    puts "You walk away feeling very unsatisfied".colorize(:yellow)
     exit
   end
-
   def startup()
     puts "At a carnival, you see a mechanical genie called Zoltar speaks".colorize(:yellow)
     puts "Would you like to insert a quarter?(yes/no)".colorize(:cyan)
@@ -81,23 +80,22 @@ class Zoltar
     end
     startup_question()
   end
-
   def zoltar_responds()
-
     case 
     when @response.downcase == "print_answers"
+      puts "Zoltar leans in close, as if trying to whisper a secret to you".colorize(:yellow)
       puts @answers.inspect
       sleep(5)
       main_menu()
     when @response.downcase == "reset_answers"
       @answers = @baseline_answers.map(&:clone)
-      puts "Answer pool has been reset"
+      puts "Zoltar becomes very stiff for a moment, and the angry red glow of his eyes becomes blank and distant, as if he was reset to factory preferences".colorize(:yellow)
       main_menu()
     when @response.downcase == "quit"
       coward()
     when @response.downcase == "i wish i were big"
       puts 'The machine produces a card. It reads, "Your wish is granted"'.colorize(:yellow)
-      puts "You begin to walk away, but notice that the machine has been unplugged this whole time".colorize(:yellow)
+      puts "You begin to walk away. As a cold wind blows, you see the Zoltar machine was unplugged all along, giving you the creeps".colorize(:yellow)
       puts "You feel eerily like Tom Hanks".colorize(:yellow)
       exit
     when @response.downcase == "add_answers"
@@ -111,16 +109,6 @@ class Zoltar
       puts @answers.sample(1)
       main_menu()
     end
-
   end
-
-
 end
-
-
-
-
-
-
-
 Zoltar.new()
